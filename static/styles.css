@@ -15,11 +15,12 @@
   }
   html, body {
     height: 100%;
+    width: 100%;
     display: flex;
   }
   a {
     font-weight: 500;
-    color: #646cff;
+    color: #c7c9e9;
     text-decoration: inherit;
   }
   a:hover {
