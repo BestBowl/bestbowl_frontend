@@ -1,6 +1,20 @@
 
-<script>
-
+<script lang="ts">
+    import { onMount } from "svelte";
+    import axios from "axios";
+    let API_URL = "http://127.0.0.1:5004"
+    onMount(async () => {
+        //@ts-ignore
+        if (localStorage.getItem("api_key") == null) {
+            let req = axios({
+                method: 'get',
+                url: API_URL+'/create_user?redirect=false',
+            })
+            let key = (await req).data
+            //@ts-ignore
+            localStorage.setItem("api_key", key)
+        }
+    })
 
 </script>
 <div class="default-layout">
@@ -54,7 +68,7 @@
         /* i dont know how to get the stupid scroll bars to go away but this hack works^^ */
         left: 0;
         display: flex;
-        position: absolute;
+        position: fixed;
         border: 0px solid white;
         width: 100%;
         height: 2rem;
